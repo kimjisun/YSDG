@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class testcomponent : MonoBehaviour {
+public class Pumping : MonoBehaviour {
 
 
 	public enum state{m_null=0,m_Grow,m_Waiting,m_Small};
