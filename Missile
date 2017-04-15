@@ -1,0 +1,18 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Missile : MonoBehaviour {
+
+	public int speed = 5;
+	const float m_maxLifeTime = 3;
+	float m_CurLifeTime=0;
+
+	void Update () {
+			transform.Translate (Vector3.up * Time.deltaTime * speed);
+			m_CurLifeTime += Time.deltaTime;
+			if (m_maxLifeTime < m_CurLifeTime) {
+			GameObject.Destroy(gameObject);}
+		}
+		
+	}
