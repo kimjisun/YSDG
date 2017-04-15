@@ -1,0 +1,45 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Raiden : MonoBehaviour {
+
+	public GameObject pfMissile;
+	public float forwardspeed = 1.5f;
+	public float backspeed=0.7f;
+	public float sidespeed=1;
+	float m_MoveTick;
+	
+	void Update () {
+		Control ();
+	}
+	void Control(){
+		//m_MoveTick = Time.deltaTime * speed;
+		if (Input.GetKeyDown (KeyCode.Space)) {
+			shoot ();
+		}
+		if (Input.GetKey (KeyCode.LeftArrow)) {
+			this.transform.Translate (Vector3.left * Time.deltaTime * sidespeed);}
+
+		else if (Input.GetKey (KeyCode.RightArrow)) {
+			this.transform.Translate (Vector3.right* Time.deltaTime * sidespeed);
+		}
+		if (Input.GetKey (KeyCode.UpArrow)) {
+			this.transform.Translate (Vector3.up* Time.deltaTime * forwardspeed);
+		}
+		else if (Input.GetKey (KeyCode.DownArrow)) {
+			this.transform.Translate (Vector3.down * Time.deltaTime * backspeed);
+		}
+
+	}
+
+	void shoot(){
+		GameObject go = Instantiate (pfMissile);
+		if (null != go) {
+			Vector3 pos = transform.position;
+			pos.y += 1.5f;
+			go.transform.position = pos;
+			Missile missile = go.GetComponent<Missile> ();
+			}
+	}
+}
